@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'article',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +50,10 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'django_test.urls'
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+)
 
 WSGI_APPLICATION = 'django_test.wsgi.application'
 
