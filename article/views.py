@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.utils import timezone
 from django.utils.dateformat import format
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 import random 
 import string
 
@@ -85,9 +85,11 @@ def add_comment(request, article_id):
 			c.save()
 
 			message = c.name + " commented on your article: " + c.article.title + "<br><br>" + c.body
-			message = message + "<br><br>Follow this link to approve<br><a href='http://127.0.0.1/article/approvecom/" + codes + "/'>http://127.0.0.1/article/approvecom/" + codes + "</a><br><br>"
-			message = message + "<br><br>Follow this link to delete<br><a href='http://127.0.0.1/article/approvecom/" + codes + "/'>http://127.0.0.1/article/deletecom/" + codes + "</a>"
-			send_mail('Comment needs approval', message, 'admin@jamesbrink.net', ['james.p.brink@gmail.com'], fail_silently=False)
+			message = message + "<br><br><br><br>Follow this link to approve<br><a href='http://127.0.0.1:8000/articles/approvecom/" + codes + "/'>http://127.0.0.1:8000/articles/approvecom/" + codes + "/</a><br><br>"
+			message = message + "<br><br>Follow this link to delete<br><a href='http://127.0.0.1:8000/articles/deletecom/" + codes + "/'>http://127.0.0.1:8000/articles/deletecom/" + codes + "/</a>"
+			msg = EmailMessage('Comment needs approval', message, 'admin@jamesbrink.net', ['james.p.brink@gmail.com'])
+			msg.content_subtype = "html"
+			msg.send()
 
 			return HttpResponseRedirect('/articles/get/%s' % article_id)
 

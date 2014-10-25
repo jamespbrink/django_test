@@ -82,6 +82,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+EMAIL_HOST = 'smtpout.secureserver.net'
+EMAIL_HOST_USER = 'admin@jamesbrink.net'
+EMAIL_HOST_PASSWORD = '***PASSWORDHERE***'
+DEFAULT_FROM_EMAIL = 'admin@jamesbrink.net'
+SERVER_EMAIL = 'admin@jamesbrink.net'
+EMAIL_PORT = 465 
+EMAIL_USE_SSL = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
