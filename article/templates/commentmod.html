@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+	
+	{% if result == "fail" %}
+	No comment to moderate.
+	{% endif %}
+
+	{% if result == "success" %}
+	Comment approved.
+	{% endif %}
+
+	{% if result == "delete" %}
+	Comment deleted.
+	{% endif %}
+
+{% endblock %}
