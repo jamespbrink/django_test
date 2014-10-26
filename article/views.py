@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from article.models import Article, Comment
+from article.models import Article, Comment, Tag
 from django.http import HttpResponse
 from forms import ArticleForm, CommentForm
 from django.http import HttpResponseRedirect
@@ -124,6 +124,12 @@ def delete_comment(request, comment_code):
 	else:
 		args['result'] = "fail"
 	return render_to_response('commentmod.html', args)
+
+def tags(request, tags):
+	if tags:
+		articles = Article.objects.filter(tag__name=tags)
+	return render_to_response('articles.html',
+		{'articles': articles})
 
 
 

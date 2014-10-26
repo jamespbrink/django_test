@@ -9,4 +9,5 @@ urlpatterns = patterns('',
 	url(r'^add_comment/(?P<article_id>\d+)/$', 'article.views.add_comment'),
 	url(r'^approvecom/(?P<comment_code>[^/]+)/$', 'article.views.approve_comment'),
 	url(r'^deletecom/(?P<comment_code>[^/]+)/$', 'article.views.delete_comment'),
+	url(r'^tags/(?P<tags>[^/]+)/$', 'article.views.tags'),
 )

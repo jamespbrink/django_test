@@ -22,3 +22,14 @@ class Comment(models.Model):
 		bod = self.body[:25]
 		com = self.article.title + " - " + self.name + ": " + bod
 		return com
+
+class Tag(models.Model):
+	name = models.CharField(max_length=200)
+	article = models.ForeignKey(Article)
+	pub_date = models.DateTimeField('date published')
+
+	def __unicode__(self):
+		tg = self.name
+		art = self.article.title
+		nm = tg + ": " + art
+		return nm
