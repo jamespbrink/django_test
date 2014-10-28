@@ -3,8 +3,8 @@ from article.models import Tag
 
 register = template.Library()
 
-def tags_list():
+@register.inclusion_tag('tags_template.html')
+def list_tags():
 	list = Tag.objects.values('name').distinct()
 	return {'list': list}
 
-register.inclusion_tag('tags_template.html')(tags_list)

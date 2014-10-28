@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-
+{% load taglist %}
 {% block sidebar %}
 <ul>
     <li><a href="/articles/all">Articles</a></li>
     <li><a href="/articles/create">Create Article</a></li>
+                {% list_tags %}
 </ul>
 {% endblock %}
 
